@@ -1,8 +1,4 @@
-import ImageData from '@canvas/image-data';
-import Dither from 'canvas-dither';
-import Flatten from 'canvas-flatten';
 import CodepageEncoder from 'pos-print-codepage-encoder';
-import resizeImageData from 'resize-image-data';
 
 /**
  * ESC/POS Language commands
@@ -430,7 +426,7 @@ class LanguageEscPos {
 
   /**
      * Encode an image
-     * @param {ImageData} image     ImageData object
+     * @param {any} image     ImageData object
      * @param {number} width        Width of the image
      * @param {number} height       Height of the image
      * @param {string} mode         Image encoding mode ('column' or 'raster')
@@ -1041,7 +1037,7 @@ class LanguageStarPrnt {
 
   /**
      * Encode an image
-     * @param {ImageData} image     ImageData object
+     * @param {any} image     ImageData object
      * @param {number} width        Width of the image
      * @param {number} height       Height of the image
      * @param {string} mode         Image encoding mode (value is ignored)
@@ -2070,6 +2066,9 @@ const printerDefinitions = {
 	'youku-58t': {vendor:'Youku',model:'58T',media:{dpi:203,width:58},capabilities:{language:'esc-pos',codepages:'youku',fonts:{A:{size:'12x24',columns:32},B:{size:'9x24',columns:42}},barcodes:{supported:true,symbologies:['upca','ean13','ean8','code39','itf','codabar','code93','code128']},qrcode:{supported:true,models:['2']},pdf417:{supported:false}}},
 };
 
+// import ImageData from '@canvas/image-data';
+
+
 /**
  * Create a byte stream based on commands for receipt printers
  */
@@ -2981,161 +2980,161 @@ class ReceiptPrinterEncoder {
   }
 
 
-  /**
-     * Image
-     *
-     * @param  {object}         input  an element, like a canvas or image that needs to be printed
-     * @param  {number}         width  width of the image on the printer
-     * @param  {number}         height  height of the image on the printer
-     * @param  {string}         algorithm  the dithering algorithm for making the image black and white
-     * @param  {number}         threshold  threshold for the dithering algorithm
-     * @return {object}                  Return the object, for easy chaining commands
-     *
-     */
-  image(input, width, height, algorithm, threshold) {
-    if (this.#options.embedded) {
-      throw new Error('Images are not supported in table cells or boxes');
-    }
+  // /**
+  //    * Image
+  //    *
+  //    * @param  {object}         input  an element, like a canvas or image that needs to be printed
+  //    * @param  {number}         width  width of the image on the printer
+  //    * @param  {number}         height  height of the image on the printer
+  //    * @param  {string}         algorithm  the dithering algorithm for making the image black and white
+  //    * @param  {number}         threshold  threshold for the dithering algorithm
+  //    * @return {object}                  Return the object, for easy chaining commands
+  //    *
+  //    */
+  // image(input, width, height, algorithm, threshold) {
+  //   if (this.#options.embedded) {
+  //     throw new Error('Images are not supported in table cells or boxes');
+  //   }
 
-    if (width % 8 !== 0) {
-      throw new Error('Width must be a multiple of 8');
-    }
+  //   if (width % 8 !== 0) {
+  //     throw new Error('Width must be a multiple of 8');
+  //   }
 
-    if (height % 8 !== 0) {
-      throw new Error('Height must be a multiple of 8');
-    }
+  //   if (height % 8 !== 0) {
+  //     throw new Error('Height must be a multiple of 8');
+  //   }
 
-    if (typeof algorithm === 'undefined') {
-      algorithm = 'threshold';
-    }
+  //   if (typeof algorithm === 'undefined') {
+  //     algorithm = 'threshold';
+  //   }
 
-    if (typeof threshold === 'undefined') {
-      threshold = 128;
-    }
+  //   if (typeof threshold === 'undefined') {
+  //     threshold = 128;
+  //   }
 
-    /* Determine the type of the input */
+  //   /* Determine the type of the input */
 
-    const name = input.constructor.name;
-    let type;
+  //   const name = input.constructor.name;
+  //   let type;
 
-    name.endsWith('Element') ? type = 'element' : null;
-    name == 'ImageData' ? type = 'imagedata' : null;
-    name == 'Canvas' && typeof input.getContext !== 'undefined' ? type = 'node-canvas' : null;
-    name == 'Image' ? type = 'node-canvas-image' : null;
-    name == 'Image' && typeof input.frames !== 'undefined' ? type = 'node-read-image' : null;
-    name == 'Object' && input.data && input.info ? type = 'node-sharp' : null;
-    name == 'View3duint8' && input.data && input.shape ? type = 'ndarray' : null;
-    name == 'Object' && input.data && input.width && input.height ? type = 'object' : null;
+  //   name.endsWith('Element') ? type = 'element' : null;
+  //   name == 'ImageData' ? type = 'imagedata' : null;
+  //   name == 'Canvas' && typeof input.getContext !== 'undefined' ? type = 'node-canvas' : null;
+  //   name == 'Image' ? type = 'node-canvas-image' : null;
+  //   name == 'Image' && typeof input.frames !== 'undefined' ? type = 'node-read-image' : null;
+  //   name == 'Object' && input.data && input.info ? type = 'node-sharp' : null;
+  //   name == 'View3duint8' && input.data && input.shape ? type = 'ndarray' : null;
+  //   name == 'Object' && input.data && input.width && input.height ? type = 'object' : null;
 
-    if (!type) {
-      throw new Error('Could not determine the type of image input');
-    }
+  //   if (!type) {
+  //     throw new Error('Could not determine the type of image input');
+  //   }
 
-    /* Turn provided data into an ImageData object */
+  //   /* Turn provided data into an ImageData object */
 
-    let image;
+  //   let image;
 
-    if (type == 'element') {
-      const canvas = document.createElement('canvas');
-      canvas.width = width;
-      canvas.height = height;
-      const context = canvas.getContext('2d');
-      context.drawImage(input, 0, 0, width, height);
-      image = context.getImageData(0, 0, width, height);
-    }
+  //   if (type == 'element') {
+  //     const canvas = document.createElement('canvas');
+  //     canvas.width = width;
+  //     canvas.height = height;
+  //     const context = canvas.getContext('2d');
+  //     context.drawImage(input, 0, 0, width, height);
+  //     image = context.getImageData(0, 0, width, height);
+  //   }
 
-    if (type == 'node-canvas') {
-      const context = input.getContext('2d');
-      image = context.getImageData(0, 0, input.width, input.height);
-    }
+  //   if (type == 'node-canvas') {
+  //     const context = input.getContext('2d');
+  //     image = context.getImageData(0, 0, input.width, input.height);
+  //   }
 
-    if (type == 'node-canvas-image') {
-      if (typeof this.#options.createCanvas !== 'function') {
-        throw new Error('Canvas is not supported in this environment, specify a createCanvas function in the options');
-      }
+  //   if (type == 'node-canvas-image') {
+  //     if (typeof this.#options.createCanvas !== 'function') {
+  //       throw new Error('Canvas is not supported in this environment, specify a createCanvas function in the options');
+  //     }
 
-      const canvas = this.#options.createCanvas(width, height);
-      const context = canvas.getContext('2d');
-      context.drawImage(input, 0, 0, width, height);
-      image = context.getImageData(0, 0, width, height);
-    }
+  //     const canvas = this.#options.createCanvas(width, height);
+  //     const context = canvas.getContext('2d');
+  //     context.drawImage(input, 0, 0, width, height);
+  //     image = context.getImageData(0, 0, width, height);
+  //   }
 
-    if (type == 'node-read-image') {
-      image = new ImageData(input.width, input.height);
-      image.data.set(input.frames[0].data);
-    }
+  //   if (type == 'node-read-image') {
+  //     image = new ImageData(input.width, input.height);
+  //     image.data.set(input.frames[0].data);
+  //   }
 
-    if (type == 'node-sharp') {
-      image = new ImageData(input.info.width, input.info.height);
-      image.data.set(input.data);
-    }
+  //   if (type == 'node-sharp') {
+  //     image = new ImageData(input.info.width, input.info.height);
+  //     image.data.set(input.data);
+  //   }
 
-    if (type == 'ndarray') {
-      image = new ImageData(input.shape[0], input.shape[1]);
-      image.data.set(input.data);
-    }
+  //   if (type == 'ndarray') {
+  //     image = new ImageData(input.shape[0], input.shape[1]);
+  //     image.data.set(input.data);
+  //   }
 
-    if (type == 'object') {
-      image = new ImageData(input.width, input.height);
-      image.data.set(input.data);
-    }
+  //   if (type == 'object') {
+  //     image = new ImageData(input.width, input.height);
+  //     image.data.set(input.data);
+  //   }
 
-    if (type == 'imagedata') {
-      image = input;
-    }
+  //   if (type == 'imagedata') {
+  //     image = input;
+  //   }
 
-    if (!image) {
-      throw new Error('Image could not be loaded');
-    }
+  //   if (!image) {
+  //     throw new Error('Image could not be loaded');
+  //   }
 
-    /* Resize image */
+  //   /* Resize image */
 
-    if (width !== image.width || height !== image.height) {
-      image = resizeImageData(image, width, height, 'bilinear-interpolation');
-    }
+  //   if (width !== image.width || height !== image.height) {
+  //     image = resizeImageData(image, width, height, 'bilinear-interpolation');
+  //   }
 
-    /* Check if the image has the correct dimensions */
+  //   /* Check if the image has the correct dimensions */
 
-    if (width !== image.width || height !== image.height) {
-      throw new Error('Image could not be resized');
-    }
+  //   if (width !== image.width || height !== image.height) {
+  //     throw new Error('Image could not be resized');
+  //   }
 
-    /* Flatten the image and dither it */
+  //   /* Flatten the image and dither it */
 
-    image = Flatten.flatten(image, [0xff, 0xff, 0xff]);
+  //   image = Flatten.flatten(image, [0xff, 0xff, 0xff]);
 
-    switch (algorithm) {
-      case 'threshold': image = Dither.threshold(image, threshold); break;
-      case 'bayer': image = Dither.bayer(image, threshold); break;
-      case 'floydsteinberg': image = Dither.floydsteinberg(image); break;
-      case 'atkinson': image = Dither.atkinson(image); break;
-    }
+  //   switch (algorithm) {
+  //     case 'threshold': image = Dither.threshold(image, threshold); break;
+  //     case 'bayer': image = Dither.bayer(image, threshold); break;
+  //     case 'floydsteinberg': image = Dither.floydsteinberg(image); break;
+  //     case 'atkinson': image = Dither.atkinson(image); break;
+  //   }
 
 
-    this.#composer.flush({forceFlush: true, ignoreAlignment: true});
+  //   this.#composer.flush({forceFlush: true, ignoreAlignment: true});
 
-    /* Set alignment */
+  //   /* Set alignment */
 
-    if (this.#composer.align !== 'left') {
-      this.#composer.add(this.#language.align(this.#composer.align));
-    }
+  //   if (this.#composer.align !== 'left') {
+  //     this.#composer.add(this.#language.align(this.#composer.align));
+  //   }
 
-    /* Encode the image data */
+  //   /* Encode the image data */
 
-    this.#composer.add(
-        this.#language.image(image, width, height, this.#options.imageMode),
-    );
+  //   this.#composer.add(
+  //       this.#language.image(image, width, height, this.#options.imageMode),
+  //   );
 
-    /* Reset alignment */
+  //   /* Reset alignment */
 
-    if (this.#composer.align !== 'left') {
-      this.#composer.add(this.#language.align('left'));
-    }
+  //   if (this.#composer.align !== 'left') {
+  //     this.#composer.add(this.#language.align('left'));
+  //   }
 
-    this.#composer.flush({forceFlush: true, ignoreAlignment: true});
+  //   this.#composer.flush({forceFlush: true, ignoreAlignment: true});
 
-    return this;
-  }
+  //   return this;
+  // }
 
   /**
      * Cut paper
