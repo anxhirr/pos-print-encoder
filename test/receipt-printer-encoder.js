@@ -1,5 +1,5 @@
-import ReceiptPrinterEncoder from '../src/receipt-printer-encoder.js';
 import { assert, expect } from 'chai';
+import ReceiptPrinterEncoder from '../src/pos-print-encoder.js';
 
 describe('ReceiptPrinterEncoder', function() {
 

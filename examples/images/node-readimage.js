@@ -1,6 +1,6 @@
-import ReceiptPrinterEncoder from "../../src/receipt-printer-encoder.js";
-import readimage from 'readimage';
 import fs from 'node:fs';
+import readimage from 'readimage';
+import ReceiptPrinterEncoder from "../../src/pos-print-encoder.js";
 
 
 let image = await new Promise(resolve => {

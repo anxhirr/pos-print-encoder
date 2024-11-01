@@ -1,5 +1,5 @@
-import ReceiptPrinterEncoder from "../../src/receipt-printer-encoder.js";
 import pixels from 'image-pixels';
+import ReceiptPrinterEncoder from "../../src/pos-print-encoder.js";
 
 let imageData = await pixels('image.png');
 

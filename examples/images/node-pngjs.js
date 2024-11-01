@@ -1,6 +1,6 @@
-import ReceiptPrinterEncoder from "../../src/receipt-printer-encoder.js";
 import ImageData from '@canvas/image-data';
 import PNG from 'png-js';
+import ReceiptPrinterEncoder from "../../src/pos-print-encoder.js";
 
 let image = await new Promise(resolve => {
     let file = PNG.load("image.png");

@@ -28,10 +28,10 @@ This package is compatible with browsers and Node. It provides bundled versions 
 
 The `dist` folder contains bundles that can be directly used in the browser. We both have a modern ES6 module, or a legacy UMD bundle.
 
-Import `ReceiptPrinterEncoder` from the `receipt-printer-encoder.esm.js` file located in the `dist` folder.
+Import `ReceiptPrinterEncoder` from the `pos-print-encoder.esm.js` file located in the `dist` folder.
 
 ```js
-import ReceiptPrinterEncoder from 'receipt-printer-encoder.esm.js';
+import ReceiptPrinterEncoder from 'pos-print-encoder.esm.js';
 
 let encoder = new ReceiptPrinterEncoder();
 
@@ -43,10 +43,10 @@ let result = encoder
     .encode();
 ```
 
-Alternatively you can load the `receipt-printer-encoder.umd.js` file located in the `dist` folder and instantiate a `ReceiptPrinterEncoder` object. 
+Alternatively you can load the `pos-print-encoder.umd.js` file located in the `dist` folder and instantiate a `ReceiptPrinterEncoder` object. 
 
 ```html
-<script src='dist/receipt-printer-encoder.umd.js'></script>
+<script src='dist/pos-print-encoder.umd.js'></script>
 
 <script>
 
@@ -57,7 +57,7 @@ Alternatively you can load the `receipt-printer-encoder.umd.js` file located in 
 Or if you prefer a loader like RequireJS, you could use this:
 
 ```js
-requirejs([ 'dist/receipt-printer-encoder.umd' ], ReceiptPrinterEncoder => {
+requirejs([ 'dist/pos-print-encoder.umd' ], ReceiptPrinterEncoder => {
     let encoder = new ReceiptPrinterEncoder();
 });
 ```
@@ -68,12 +68,12 @@ requirejs([ 'dist/receipt-printer-encoder.umd' ], ReceiptPrinterEncoder => {
 
 If you want to use this libary, first install the package using npm:
 
-    npm install @point-of-sale/receipt-printer-encoder --save
+    npm install @point-of-sale/pos-print-encoder --save
 
-If you prefer ES6 modules, then import `ReceiptPrinterEncoder` from `@point-of-sale/receipt-printer-encoder` and use it like so:
+If you prefer ES6 modules, then import `ReceiptPrinterEncoder` from `@point-of-sale/pos-print-encoder` and use it like so:
 
 ```js
-import ReceiptPrinterEncoder from '@point-of-sale/receipt-printer-encoder';
+import ReceiptPrinterEncoder from '@point-of-sale/pos-print-encoder';
 
 let encoder = new ReceiptPrinterEncoder();
 
@@ -88,7 +88,7 @@ let result = encoder
 Alternatively you could use the CommonJS way of doing things and require the package:
 
 ```js
-let ReceiptPrinterEncoder = require('@point-of-sale/receipt-printer-encoder');
+let ReceiptPrinterEncoder = require('@point-of-sale/pos-print-encoder');
 
 let encoder = new ReceiptPrinterEncoder();
 ```
@@ -100,7 +100,7 @@ let encoder = new ReceiptPrinterEncoder();
 This library does not have a dedicated package on `deno.land/x`, but you can directly import the NPM package. It is fully compatible with Deno.
 
 ```js
-import ReceiptPrinterEncoder from 'npm:@point-of-sale/receipt-printer-encoder';
+import ReceiptPrinterEncoder from 'npm:@point-of-sale/pos-print-encoder';
 
 let encoder = new ReceiptPrinterEncoder();
 ```

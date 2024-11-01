@@ -1,5 +1,5 @@
-import ReceiptPrinterEncoder from "../../src/receipt-printer-encoder.js";
 import sharp from "sharp";
+import ReceiptPrinterEncoder from "../../src/pos-print-encoder.js";
 
 let buffer = await sharp('image.png')
   .raw()

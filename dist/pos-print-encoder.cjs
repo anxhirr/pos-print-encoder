@@ -1305,7 +1305,7 @@ class TextStyle {
      * @param  {object}   options   Object containing configuration options
      */
   constructor(options) {
-    this.#current = structuredClone(this.#default);
+    this.#current = JSON.parse(JSON.stringify(this.#default));
     this.#callback = options.callback || (() => {});
   }
 

@@ -6,10 +6,10 @@ export default [
 
 	// Browser-friendly UMD build
 	{
-		input: 'src/receipt-printer-encoder.js',
+		input: 'src/pos-print-encoder.js',
 		output: {
 			name: 'ReceiptPrinterEncoder',
-			file: 'dist/receipt-printer-encoder.umd.js',
+			file: 'dist/pos-print-encoder.umd.js',
 			sourcemap: true,
 			format: 'umd'
 		},
@@ -22,9 +22,9 @@ export default [
 
 	// Browser-friendly ES module build
 	{
-		input: 'src/receipt-printer-encoder.js',
+		input: 'src/pos-print-encoder.js',
 		output: { 
-			file: 'dist/receipt-printer-encoder.esm.js', 
+			file: 'dist/pos-print-encoder.esm.js', 
 			sourcemap: true,
 			format: 'es' 
 		},
@@ -37,11 +37,11 @@ export default [
 
     // CommonJS (for Node) and ES module (for bundlers) build
     {
-		input: 'src/receipt-printer-encoder.js',
+		input: 'src/pos-print-encoder.js',
 		external: ['@canvas/image-data', 'canvas-dither', 'canvas-flatten', 'resize-image-data', '@point-of-sale/codepage-encoder'],
 		output: [
-			{ file: 'dist/receipt-printer-encoder.cjs', format: 'cjs' },
-			{ file: 'dist/receipt-printer-encoder.mjs', format: 'es' }
+			{ file: 'dist/pos-print-encoder.cjs', format: 'cjs' },
+			{ file: 'dist/pos-print-encoder.mjs', format: 'es' }
 		]
 	}
 ];

@@ -1,19 +1,19 @@
 {
-    "name": "@point-of-sale/receipt-printer-encoder",
+    "name": "pos-print-encoder",
     "version": "3.0.2",
     "description": "Create a set of commands that can be send to any receipt printer that supports ESC/POS, StarLine or StarPRNT",
     "type": "module",
     "exports": {
       "browser": {
-        "import": "./dist/receipt-printer-encoder.esm.js",
-        "require": "./dist/receipt-printer-encoder.umd.js",
-        "script": "./dist/receipt-printer-encoder.umd.js"
+        "import": "./dist/pos-print-encoder.esm.js",
+        "require": "./dist/pos-print-encoder.umd.js",
+        "script": "./dist/pos-print-encoder.umd.js"
       },
-      "import": "./dist/receipt-printer-encoder.mjs",
-      "require": "./dist/receipt-printer-encoder.cjs"
+      "import": "./dist/pos-print-encoder.mjs",
+      "require": "./dist/pos-print-encoder.cjs"
     },
-    "main": "dist/receipt-printer-encoder.cjs",
-    "module": "dist/receipt-printer-encoder.mjs",
+    "main": "dist/pos-print-encoder.cjs",
+    "module": "dist/pos-print-encoder.mjs",
     "scripts": {
       "build": "npm run generate && rollup -c",
       "generate": "node tools/generate.js",

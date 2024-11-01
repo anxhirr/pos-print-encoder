@@ -1,6 +1,6 @@
-import ReceiptPrinterEncoder from "../src/receipt-printer-encoder.js";
 import { createCanvas } from 'canvas';
 import { drawText } from 'canvas-txt';
+import ReceiptPrinterEncoder from "../src/pos-print-encoder.js";
 
 /* Create an oversized canvas */
 

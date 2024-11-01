@@ -1,6 +1,6 @@
-import ReceiptPrinterEncoder from "../../src/receipt-printer-encoder.js";
 import { getImageData, imageFromBuffer } from '@canvas/image';
 import fs from 'node:fs';
+import ReceiptPrinterEncoder from "../../src/pos-print-encoder.js";
 
 let imageData = getImageData(await imageFromBuffer(fs.readFileSync('image.png')));
 

@@ -1,5 +1,5 @@
-import ReceiptPrinterEncoder from "../../src/receipt-printer-encoder.js";
 import getPixels from 'get-pixels';
+import ReceiptPrinterEncoder from "../../src/pos-print-encoder.js";
 
 let pixels = await new Promise(resolve => {
     getPixels('image.png', (err, pixels) => {

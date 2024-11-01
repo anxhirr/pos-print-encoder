@@ -1,5 +1,5 @@
-import ReceiptPrinterEncoder from "../../src/receipt-printer-encoder.js";
 import { createCanvas, loadImage } from "https://deno.land/x/canvas/mod.ts";
+import ReceiptPrinterEncoder from "../../src/pos-print-encoder.js";
 
 let image = await loadImage('image.png');
 

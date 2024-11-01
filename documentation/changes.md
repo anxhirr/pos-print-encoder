@@ -46,7 +46,7 @@ Version 2:
 
 Version 3:
 
-    npm i @point-of-sale/receipt-printer-encoder
+    npm i @point-of-sale/pos-print-encoder
 
 <br>
 
@@ -89,7 +89,7 @@ Version 3:
 
 ```js
 import { createCanvas, loadImage } from 'canvas';
-import ReceiptPrinterEncoder from '@point-of-sale/receipt-printer-encoder';
+import ReceiptPrinterEncoder from '@point-of-sale/pos-print-encoder';
 
 let image = await loadImage('image.png');
 
