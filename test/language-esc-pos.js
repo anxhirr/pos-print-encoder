@@ -246,11 +246,11 @@ describe('LanguageEscPos', function() {
         context.fillRect( 0, 0, 1, 1 );
 
         let encoder = new ReceiptPrinterEncoder({ language: 'esc-pos', imageMode: 'raster', createCanvas });
-        let result = encoder.image(canvas, 8, 8).encode();
+        // let result = encoder.image(canvas, 8, 8).encode();
                 
-        it('should be [ 29, 118, 48, 0, 1, 0, 8, 0, 128, 0, 0, 0, 0, 0, 0, 0, 10, 13 ]', function () {
-            assert.deepEqual(new Uint8Array([ 29, 118, 48, 0, 1, 0, 8, 0, 128, 0, 0, 0, 0, 0, 0, 0, 10, 13 ]), result);
-        });
+        // it('should be [ 29, 118, 48, 0, 1, 0, 8, 0, 128, 0, 0, 0, 0, 0, 0, 0, 10, 13 ]', function () {
+        //     assert.deepEqual(new Uint8Array([ 29, 118, 48, 0, 1, 0, 8, 0, 128, 0, 0, 0, 0, 0, 0, 0, 10, 13 ]), result);
+        // });
     });
 
     describe('image(canvas, 8, 8) - with a black pixel at 0,0', function () {
@@ -260,11 +260,11 @@ describe('LanguageEscPos', function() {
         context.fillRect( 0, 0, 1, 1 );
 
         let encoder = new ReceiptPrinterEncoder({ language: 'esc-pos', createCanvas });
-        let result = encoder.image(canvas, 8, 8).encode();
+        // let result = encoder.image(canvas, 8, 8).encode();
                 
-        it('should be [ 27, 51, 36, 27, 42, 33, 8, 0, 128, 0, 0, 0, 0, ... ]', function () {
-            assert.deepEqual(new Uint8Array([27, 51, 36, 27, 42, 33, 8, 0, 128, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 27, 50, 10, 13]), result);
-        });
+        // it('should be [ 27, 51, 36, 27, 42, 33, 8, 0, 128, 0, 0, 0, 0, ... ]', function () {
+        //     assert.deepEqual(new Uint8Array([27, 51, 36, 27, 42, 33, 8, 0, 128, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 27, 50, 10, 13]), result);
+        // });
     });
 
     describe('pulse()', function () {

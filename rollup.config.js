@@ -38,7 +38,12 @@ export default [
     // CommonJS (for Node) and ES module (for bundlers) build
     {
 		input: 'src/pos-print-encoder.js',
-		external: ['@canvas/image-data', 'canvas-dither', 'canvas-flatten', 'resize-image-data', 'pos-print-codepage-encoder'],
+		external: [
+			// '@canvas/image-data', V => "^1.0.0"
+			// 'canvas-dither', V => "^1.0.1"
+			// 'canvas-flatten', V => "^1.0.1"
+			// 'resize-image-data', V => "^0.3.1" 
+				 'pos-print-codepage-encoder'],
 		output: [
 			{ file: 'dist/pos-print-encoder.cjs', format: 'cjs' },
 			{ file: 'dist/pos-print-encoder.mjs', format: 'es' }

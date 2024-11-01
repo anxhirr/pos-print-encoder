@@ -426,7 +426,7 @@ class LanguageEscPos {
 
   /**
      * Encode an image
-     * @param {ImageData} image     ImageData object
+     * @param {any} image     ImageData object
      * @param {number} width        Width of the image
      * @param {number} height       Height of the image
      * @param {string} mode         Image encoding mode ('column' or 'raster')
