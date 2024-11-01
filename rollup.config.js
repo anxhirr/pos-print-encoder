@@ -1,5 +1,5 @@
-import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
+import resolve from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
 
 export default [
@@ -38,7 +38,7 @@ export default [
     // CommonJS (for Node) and ES module (for bundlers) build
     {
 		input: 'src/pos-print-encoder.js',
-		external: ['@canvas/image-data', 'canvas-dither', 'canvas-flatten', 'resize-image-data', '@point-of-sale/codepage-encoder'],
+		external: ['@canvas/image-data', 'canvas-dither', 'canvas-flatten', 'resize-image-data', 'pos-print-codepage-encoder'],
 		output: [
 			{ file: 'dist/pos-print-encoder.cjs', format: 'cjs' },
 			{ file: 'dist/pos-print-encoder.mjs', format: 'es' }

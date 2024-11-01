@@ -1,9 +1,9 @@
 'use strict';
 
+var ImageData = require('@canvas/image-data');
 var Dither = require('canvas-dither');
 var Flatten = require('canvas-flatten');
-var CodepageEncoder = require('@point-of-sale/codepage-encoder');
-var ImageData = require('@canvas/image-data');
+var CodepageEncoder = require('pos-print-codepage-encoder');
 var resizeImageData = require('resize-image-data');
 
 /**

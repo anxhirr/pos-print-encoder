@@ -1,4 +1,4 @@
-import CodepageEncoder from '@point-of-sale/codepage-encoder';
+import CodepageEncoder from 'pos-print-codepage-encoder';
 
 /**
  * ESC/POS Language commands
